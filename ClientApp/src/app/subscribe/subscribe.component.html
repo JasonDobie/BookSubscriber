@@ -1,0 +1,50 @@
+<h1 id="tableLabel">Book Subscriptions</h1>
+
+<br />
+<br />
+
+<p *ngIf="!subscriptions"><em>Loading Subscriptions...</em></p>
+
+<h2>Your Subscriptions</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="subscriptions">
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subscription of subscriptions">
+      <td hidden="hidden">{{ subscription.id }}</td>
+      <td>{{ subscription.book.name }}</td>
+      <td><a (click)="unsubscribe(subscription.id)" class="btn btn-warning">Unsubscribe</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+<br />
+
+<p *ngIf="!books"><em>Loading Books...</em></p>
+
+<h2>Available Books</h2>
+<a class="nav-link text-dark" style="background-color:blueviolet;align-content:center" [routerLink]="['/addbook']"><b>Add Book</b></a>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="books">
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Book Text</th>
+      <th>Purchase Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td hidden="hidden">{{ book.id }}</td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.text }}</td>
+      <td>{{ book.purchasePrice }}</td>
+      <td><a (click)="subscribe(book.id)" class="btn btn-info">Subscribe</a></td>
+    </tr>
+  </tbody>
+</table>

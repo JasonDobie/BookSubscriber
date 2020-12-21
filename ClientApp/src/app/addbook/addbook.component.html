@@ -1,0 +1,50 @@
+<div class="container">
+
+  <form [formGroup]="BookForm" (ngSubmit)="this[EventValue]()">
+
+    <h3>Book</h3>
+    <div class="row">
+      <table class="table">
+        <tr hidden="hidden">
+          <td></td>
+          <td>
+            <input type="hidden" formControlName="bookId">
+          </td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" formControlName="name" />
+            <div *ngIf="submitted && BookForm.controls.name.errors" class="text-danger">
+              <div *ngIf="BookForm.controls.name.errors.required">Book name is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Text</td>
+          <td>
+            <input type="text" formControlName="text" />
+            <div *ngIf="submitted && BookForm.controls.text.errors" class="text-danger">
+              <div *ngIf="BookForm.controls.text.errors.required">Book text is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Purchase Price</td>
+          <td>
+            <input type="number" formControlName="purchasePrice" />
+            <div *ngIf="submitted && BookForm.controls.purchasePrice.errors" class="text-danger">
+              <div *ngIf="BookForm.controls.purchasePrice.errors.required">Book purchase price is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+</div>
